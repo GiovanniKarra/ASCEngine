@@ -6,7 +6,7 @@ class display:
         self._width : int = width
         self._height : int = height
 
-        self._screen : list[list[str]] = [["."] * width] * height
+        self._screen : list[list[str]] = [["." for _ in range(width)] for _ in range(height)]
 
 
     def update_display(self):
