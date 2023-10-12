@@ -34,6 +34,10 @@ class Display:
 
 if __name__ == "__main__":
     Display.initialize(50, 10)
-    Display.set_pixels("#", 5, 5)
-    Display.update_display()
+    from time import sleep
+    for i in range(30):
+        Display.set_pixels("#", 5+i, 5)
+        Display.update_display()
+        sleep(0.5)
+        
     input()
