@@ -1,2 +1,4 @@
 class GameObject:
-    pass
+    
+    def __init__(self):
+        pass
