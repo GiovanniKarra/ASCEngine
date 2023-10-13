@@ -9,10 +9,10 @@ class Display:
 
     @classmethod
     def initialize(cls, width : int, height : int):
-        cls._width : int = width
-        cls._height : int = height
+        cls._width = width
+        cls._height = height
 
-        cls._screen : list[list[str]] = [["." for _ in range(width)] for _ in range(height)]
+        cls._screen = [["." for _ in range(width)] for _ in range(height)]
 
 
     @classmethod
@@ -38,6 +38,6 @@ if __name__ == "__main__":
     for i in range(30):
         Display.set_pixels("#", 5+i, 5)
         Display.update_display()
-        sleep(0.5)
+        sleep(0.05)
         
     input()
