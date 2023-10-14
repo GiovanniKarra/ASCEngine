@@ -12,7 +12,7 @@ class Display:
         cls._width = width
         cls._height = height
 
-        cls._screen = [["." for _ in range(width)] for _ in range(height)]
+        cls._screen = [[" " for _ in range(width)] for _ in range(height)]
 
 
     @classmethod
