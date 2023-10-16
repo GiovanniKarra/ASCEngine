@@ -3,7 +3,7 @@ from display import Display
 
 
 def get_params():
-    file = open(r"C:\Users\super\CodeProjects\ASCEngine\Prefs\Prefs.txt", "r")
+    file = open("C:/Users/super/CodeProjects/ASCEngine/Prefs/Prefs.txt", "r")
     width, height = file.readlines()
 
     return int(width), int(height)
