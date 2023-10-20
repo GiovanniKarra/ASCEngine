@@ -1,4 +1,4 @@
-from renderer import Sprite
+from renderer import Sprite, Renderer
 
 class GameObject:
     
@@ -7,7 +7,7 @@ class GameObject:
         self._y : int
         self._sprite : Sprite = None
 
-        GameObjectManager.send_object(self)
+        GameObjectManager.add_object(self)
 
 
     def update(self) -> None:
@@ -31,6 +31,10 @@ class GameObject:
     def set_sprite(self, sprite : Sprite) -> None:
         self._sprite = sprite
 
+    
+    def get_sprite(self) -> Sprite:
+        return self._sprite
+
 
 
 class GameObjectManager:
@@ -39,15 +43,24 @@ class GameObjectManager:
 
 
     @classmethod
-    def initialize(cls):
+    def initialize(cls) -> None:
         cls._gameobjects = []
 
     
     @classmethod
-    def send_object(cls, object : GameObject):
+    def update(cls) -> None:
+        for object in cls._gameobjects:
+            object.update()
+            if sprite := object.get_sprite() is not None:
+                x, y = object.get_position()
+                Renderer.draw_sprite(sprite, x, y)
+
+
+    @classmethod
+    def add_object(cls, object : GameObject) -> None:
         cls._gameobjects.append(object)
 
 
     @classmethod
-    def remove_object(cls, object : GameObject):
+    def remove_object(cls, object : GameObject) -> None:
         cls._gameobjects.remove(object)

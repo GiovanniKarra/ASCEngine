@@ -1,4 +1,5 @@
 import os
+from utils import log
 
 class Display:
 
@@ -23,20 +24,30 @@ class Display:
 
 
     @classmethod
-    def set_pixels(cls, value : str, x : int, y : int) -> None:
+    def set_pixels(cls, value : str, screen_position : (int, int)) -> None:
+        if value == "" or value == "§":
+            return
+
+        log(f"pixel draw : {value}")
+        x, y = screen_position
         cls._screen[y][x] = value
 
 
     @classmethod
+    def get_size(cls) -> (int, int):
+        return cls._width, cls._height
+
+
+    @classmethod
     def clear(cls) -> None:
-        os.system("cls")
+        os.system("clear")
 
 
 if __name__ == "__main__":
     Display.initialize(50, 10)
     from time import sleep
     for i in range(30):
-        Display.set_pixels("#", 5+i, 5)
+        Display.set_pixels("#", (5+i, 5))
         Display.update_display()
         sleep(0.05)
         
