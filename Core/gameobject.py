@@ -3,15 +3,16 @@ from renderer import Sprite, Renderer
 class GameObject:
     
     def __init__(self):
-        self._x : int
-        self._y : int
+        self._x : int = 0
+        self._y : int = 0
         self._sprite : Sprite = None
+        self.delta : int = 0
 
         GameObjectManager.add_object(self)
 
 
     def update(self) -> None:
-        pass
+        self.delta += 1
 
 
     def set_position(self, x : int, y : int) -> None:
@@ -51,9 +52,9 @@ class GameObjectManager:
     def update(cls) -> None:
         for object in cls._gameobjects:
             object.update()
-            if sprite := object.get_sprite() is not None:
+            if (sprite := object.get_sprite()) is not None:
                 x, y = object.get_position()
-                Renderer.draw_sprite(sprite, x, y)
+                Renderer.draw_sprite(sprite, (x, y))
 
 
     @classmethod

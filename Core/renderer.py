@@ -23,8 +23,12 @@ class Renderer:
     @classmethod
     def draw_sprite(cls, sprite : Sprite, position : (int, int)) -> None:
         x, y = position
+        width, height = Display.get_size()
+
+        if x >= width or y >= height:
+            return
         
-        if not sprite.layer in cls._torender:
+        if sprite.layer not in cls._torender:
             cls._torender[sprite.layer] = []
         
         cls._torender[sprite.layer].append((sprite, x, y))
@@ -35,6 +39,8 @@ class Renderer:
         for i in sorted(cls._torender):
             for sprite, x, y in cls._torender[i]:
                 cls.render(sprite.sprite, (x, y))
+
+        cls._torender = dict()
 
 
     @staticmethod

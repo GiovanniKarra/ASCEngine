@@ -21,15 +21,17 @@ class Display:
         cls.clear()
         rows = ["".join(r) for r in cls._screen]
         print("\n".join(rows))
+        
+        cls._screen = [[" " for _ in range(cls._width)] for _ in range(cls._height)]
 
 
     @classmethod
     def set_pixels(cls, value : str, screen_position : (int, int)) -> None:
-        if value == "" or value == "§":
+        x, y = screen_position
+        
+        if value == "" or value == "§" or x >= cls._width or y >= cls._height:
             return
 
-        log(f"pixel draw : {value}")
-        x, y = screen_position
         cls._screen[y][x] = value
 
 

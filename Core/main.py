@@ -1,10 +1,11 @@
-from gameobject import GameObjectManager
+from gameobject import GameObjectManager, GameObject
 from renderer import Renderer, Sprite
 from display import Display
+from utils import log
 import time
 
 
-params : dict[str : int] = None
+params : dict[str: int] = None
 
 
 def set_params():
@@ -31,9 +32,9 @@ def main_loop():
     while True:
         init_time = time.time()
 
-        Display.update_display()
         GameObjectManager.update()
         Renderer.update()
+        Display.update_display()
 
         dtime = time.time() - init_time
         if ticktime > dtime :
@@ -45,20 +46,7 @@ def initialize_engine():
     initialize_components()
 
 
-def test():
-    sprite1 : Sprite = Renderer.create_sprite_from_string("000\n"\
-                                                          "000")
-    
-    sprite2 : Sprite = Renderer.create_sprite_from_string("§0§\n"\
-                                                          "000")
-    
-    Renderer.draw_sprite(sprite1, (2, 5))
-    Renderer.draw_sprite(sprite2, (30, 0))
-
-
 if __name__ == "__main__":
     initialize_engine()
-
-    test()
 
     main_loop()
