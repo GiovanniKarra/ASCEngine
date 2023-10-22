@@ -1,21 +1,22 @@
-from gameobject import GameObjectManager, GameObject
-from renderer import Renderer, Sprite
+from gameobject import GameObjectManager
+from renderer import Renderer
 from display import Display
 from utils import log
 import time
 
 
-params : dict[str: int] = None
+params : dict[str: int] = dict()
 
 
 def set_params():
     file = open("../Prefs/Prefs.txt", "r")
-    width, height, tickrate = file.readlines()
+    lines = file.readlines()
 
     global params
-    params = {"width": int(width),
-              "height": int(height),
-              "tickrate": int(tickrate)}
+
+    for line in lines:
+        name, value = line.split(":")
+        params[name] = int(value)
 
 
 def initialize_components():

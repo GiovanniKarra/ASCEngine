@@ -14,6 +14,7 @@ if __name__ == "__main__":
     
     sprite2 : Sprite = Renderer.create_sprite_from_string("§X§\n"\
                                                           "XXX", 1)
+
     class G(GameObject):
         def __init__(self):
             super().__init__()
