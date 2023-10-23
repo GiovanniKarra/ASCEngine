@@ -23,10 +23,6 @@ class Renderer:
     @classmethod
     def draw_sprite(cls, sprite : Sprite, position : (int, int)) -> None:
         x, y = position
-        width, height = Display.get_size()
-
-        if x >= width or y >= height:
-            return
         
         if sprite.layer not in cls._torender:
             cls._torender[sprite.layer] = []

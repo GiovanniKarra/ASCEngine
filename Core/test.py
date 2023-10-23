@@ -13,19 +13,19 @@ if __name__ == "__main__":
                                                           "000")
     
     sprite2 : Sprite = Renderer.create_sprite_from_string("§X§\n"\
-                                                          "XXX", 1)
+                                                          "XXX", 0)
 
     class G(GameObject):
         def __init__(self):
             super().__init__()
             self.set_sprite(sprite1)
             self.set_position(2, 5)
-            self.delta = 0
+            self.tickcount = 0
 
         def update(self) -> None:
             super().update()
             x, y = self.get_position()
-            self.set_position(x+int(not self.delta%10), y)
+            self.set_position(x+int(not self.tickcount%10), y)
 
     class F(GameObject):
         def __init__(self):
@@ -36,8 +36,8 @@ if __name__ == "__main__":
         def update(self) -> None:
             super().update()
             x, y = self.get_position()
-            offset_x = int(not self.delta%10)
-            offset_y = int(not self.delta%60)
+            offset_x = int(not self.tickcount%10)
+            offset_y = int(not self.tickcount%60)
             self.set_position(x-offset_x, y+offset_y)
 
     g = G()

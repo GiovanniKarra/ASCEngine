@@ -42,7 +42,7 @@ class Display:
 
     @classmethod
     def clear(cls) -> None:
-        os.system("clear")
+        os.system("clear" if os.name == "nt" else "cls")
 
 
 if __name__ == "__main__":

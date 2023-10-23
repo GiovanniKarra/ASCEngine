@@ -6,13 +6,13 @@ class GameObject:
         self._x : int = 0
         self._y : int = 0
         self._sprite : Sprite = None
-        self.delta : int = 0
+        self.tickcount : int = 0
 
         GameObjectManager.add_object(self)
 
 
     def update(self) -> None:
-        self.delta += 1
+        self.tickcount += 1
 
 
     def set_position(self, x : int, y : int) -> None:
