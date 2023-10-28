@@ -3,6 +3,7 @@ from gameobject import *
 from main import *
 from display import *
 from utils import *
+from ui import *
 
 
 
@@ -14,6 +15,8 @@ if __name__ == "__main__":
     
     sprite2 : Sprite = Renderer.create_sprite_from_string("§X§\n"\
                                                           "XXX", 0)
+
+    ui_sprite : UIManager = Renderer.create_sprite_from_string("Ceci est du texte")
 
     class G(GameObject):
         def __init__(self):
@@ -40,7 +43,15 @@ if __name__ == "__main__":
             offset_y = int(not self.tickcount%60)
             self.set_position(x-offset_x, y+offset_y)
 
+    class H(UIElement):
+        def __init__(self):
+            super().__init__()
+            self.set_sprite(ui_sprite)
+            self.set_position(9, 9)
+
+
     g = G()
     f = F()
+    #h = H()
 
     main_loop()

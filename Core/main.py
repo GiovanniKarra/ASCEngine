@@ -1,6 +1,7 @@
 from gameobject import GameObjectManager
 from renderer import Renderer
 from display import Display
+from ui import UIManager
 from utils import log
 import time
 
@@ -24,6 +25,7 @@ def initialize_components():
 
     Display.initialize(width, height)
     GameObjectManager.initialize()
+    UIManager.initialize()
 
 
 def main_loop():
@@ -33,6 +35,7 @@ def main_loop():
     while True:
         init_time = time.time()
 
+        UIManager.update()
         GameObjectManager.update()
         Renderer.update()
         Display.update_display()
