@@ -4,24 +4,24 @@ from utils import log
 from enum import Enum
 
 
-BACKGROUND = 0
-GAMEOBJECT = 1
-UI = 2
+TYPE_BACKGROUND = 0
+TYPE_GAMEOBJECT = 1
+TYPE_UI = 2
 
 
 @dataclass
 class Sprite:
     sprite : list[list[str]]
     layer : int
-    type : int = GAMEOBJECT
+    type : int = TYPE_GAMEOBJECT
 
 
 class Renderer:
 
     _torender : dict[int: dict[int: list[(Sprite, int, int)]]] = {
-        BACKGROUND : dict(),
-        GAMEOBJECT : dict(),
-        UI : dict()
+        TYPE_BACKGROUND : dict(),
+        TYPE_GAMEOBJECT : dict(),
+        TYPE_UI : dict()
     }
 
     @staticmethod
@@ -50,9 +50,9 @@ class Renderer:
                     cls.render(sprite.sprite, (x, y))
 
         cls._torender = {
-            BACKGROUND : dict(),
-            GAMEOBJECT : dict(),
-            UI : dict()
+            TYPE_BACKGROUND : dict(),
+            TYPE_GAMEOBJECT : dict(),
+            TYPE_UI : dict()
         }
 
 

@@ -1,7 +1,8 @@
 from gameobject import GameObjectManager
 from renderer import Renderer
 from display import Display
-from ui import UIManager
+#from ui import UIManager
+from input import Input
 from utils import log
 import time
 
@@ -14,7 +15,7 @@ def set_params():
     lines = file.readlines()
 
     global params
-
+    
     for line in lines:
         name, value = line.split(":")
         params[name] = int(value)
@@ -25,7 +26,8 @@ def initialize_components():
 
     Display.initialize(width, height)
     GameObjectManager.initialize()
-    UIManager.initialize()
+    #UIManager.initialize()
+    Input.initialize()
 
 
 def main_loop():
@@ -35,10 +37,11 @@ def main_loop():
     while True:
         init_time = time.time()
 
-        UIManager.update()
+        #UIManager.update()
         GameObjectManager.update()
         Renderer.update()
-        Display.update_display()
+        Display.update()
+        Input.update()
 
         dtime = time.time() - init_time
         if ticktime > dtime :

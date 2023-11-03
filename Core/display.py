@@ -17,7 +17,7 @@ class Display:
 
 
     @classmethod
-    def update_display(cls) -> None:
+    def update(cls) -> None:
         cls.clear()
         rows = ["".join(r) for r in cls._screen]
         print("\n".join(rows))
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     from time import sleep
     for i in range(30):
         Display.set_pixels("#", (5+i, 5))
-        Display.update_display()
+        Display.update()
         sleep(0.05)
         
     input()

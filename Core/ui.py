@@ -1,5 +1,5 @@
-from renderer import Sprite, Renderer, UI, BACKGROUND, GAMEOBJECT
-from gameobject import GameObject
+from renderer import Sprite, Renderer, TYPE_UI
+from gameobject import GameObject, GameObjectManager
 
 
 class UIElement(GameObject):
@@ -10,44 +10,44 @@ class UIElement(GameObject):
         self._sprite : Sprite = None
         self.tickcount : int = 0
 
-        UIManager.add_object(self)
+        GameObjectManager.add_object(self)
 
 
     def destroy(self) -> None:
-        UIManager.remove_object(self)
+        GameObjectManager.remove_object(self)
         del self
 
     
     def set_sprite(self, sprite: Sprite) -> None:
-        sprite.type = UI
+        sprite.type = TYPE_UI
         super().set_sprite(sprite)
 
 
 
-class UIManager:
+# class UIManager:
 
-    _uielements : list[GameObject]
+#     _uielements : list[GameObject]
 
 
-    @classmethod
-    def initialize(cls) -> None:
-        cls._uielements = []
+#     @classmethod
+#     def initialize(cls) -> None:
+#         cls._uielements = []
 
     
-    @classmethod
-    def update(cls) -> None:
-        for element in cls._uielements:
-            element.update()
-            if (sprite := element.get_sprite()) is not None:
-                x, y = element.get_position()
-                Renderer.draw_sprite(sprite, (x, y))
+#     @classmethod
+#     def update(cls) -> None:
+#         for element in cls._uielements:
+#             element.update()
+#             if (sprite := element.get_sprite()) is not None:
+#                 x, y = element.get_position()
+#                 Renderer.draw_sprite(sprite, (x, y))
 
 
-    @classmethod
-    def add_object(cls, object : GameObject) -> None:
-        cls._uielements.append(object)
+#     @classmethod
+#     def add_object(cls, object : GameObject) -> None:
+#         cls._uielements.append(object)
 
 
-    @classmethod
-    def remove_object(cls, object : GameObject) -> None:
-        cls._uielements.remove(object)
+#     @classmethod
+#     def remove_object(cls, object : GameObject) -> None:
+#         cls._uielements.remove(object)
