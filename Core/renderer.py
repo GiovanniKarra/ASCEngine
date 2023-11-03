@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from display import Display
 from utils import log
 from enum import Enum
+from prefs import Prefs
 
 
 TYPE_BACKGROUND = 0
@@ -62,4 +63,7 @@ class Renderer:
 
         for i in range(len(sprite)):
             for j in range(len(sprite[i])):
-                Display.set_pixels(sprite[i][j], (x+j, y+i))
+                if x+j >= 0 and x+j < Prefs.get_param("width")\
+                        and y+i >= 0 and y+i < Prefs.get_param("height"):
+                    
+                    Display.set_pixels(sprite[i][j], (x+j, y+i))

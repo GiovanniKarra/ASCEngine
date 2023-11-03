@@ -2,27 +2,14 @@ from gameobject import GameObjectManager
 from renderer import Renderer
 from display import Display
 #from ui import UIManager
+from prefs import Prefs
 from input import Input
 from utils import log
 import time
 
 
-params : dict[str: int] = dict()
-
-
-def set_params():
-    file = open("../Prefs/Prefs.txt", "r")
-    lines = file.readlines()
-
-    global params
-    
-    for line in lines:
-        name, value = line.split(":")
-        params[name] = int(value)
-
-
 def initialize_components():
-    width, height = params["width"], params["height"]
+    width, height = Prefs.get_param("width"), Prefs.get_param("height")
 
     Display.initialize(width, height)
     GameObjectManager.initialize()
@@ -31,7 +18,7 @@ def initialize_components():
 
 
 def main_loop():
-    tickrate = params["tickrate"]
+    tickrate = Prefs.get_param("tickrate")
     ticktime = 1/tickrate
 
     while True:
@@ -49,7 +36,7 @@ def main_loop():
 
 
 def initialize_engine():
-    set_params()
+    Prefs.set_params()
     initialize_components()
 
 
