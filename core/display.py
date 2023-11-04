@@ -1,4 +1,9 @@
 import os
+from consoledraw import Console
+
+
+console = Console()
+
 
 class Display:
     """Class that controls the display"""
@@ -20,9 +25,11 @@ class Display:
     @staticmethod
     def update() -> None:
         """Update the display"""
-        Display.clear()
+        #Display.clear()
+        console.clear()
         rows = ["".join(r) for r in Display._screen]
-        print("\n".join(rows))
+        console.print("\n".join(rows))
+        console.update()
         
         Display._screen = [[" " for _ in range(Display._width)] for _ in range(Display._height)]
 
