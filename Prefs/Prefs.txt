@@ -1,3 +1,0 @@
-width:50
-height:10
-tickrate:30

@@ -29,7 +29,7 @@ os.chdir(project_dir)
 f = open("main.py", "w")
 f.write("from Core import *\n\n\n"\
         "if __name__ == \"__main__\":\n"\
-        "   initialize_components()\n\n"\
+        "   initialize_engine()\n\n"\
         "   # YOUR CODE\n\n"\
         "   main_loop()\n")
 
