@@ -6,31 +6,31 @@ class Input:
     _pressed_buffer : set[Key] = set()
     _released_buffer : set[Key] = set()
 
-    @classmethod
-    def keypressed(cls, key : Key) -> bool:
-        return key in cls._pressed_buffer
+    @staticmethod
+    def keypressed(key : Key) -> bool:
+        return key in Input._pressed_buffer
     
-    @classmethod
-    def keyreleased(cls, key : Key) -> bool:
-        return key in cls._released_buffer
+    @staticmethod
+    def keyreleased(key : Key) -> bool:
+        return key in Input._released_buffer
 
-    @classmethod
-    def initialize(cls):
-        listener = Listener(on_press=cls._on_press, on_release=cls._on_release)
+    @staticmethod
+    def initialize():
+        listener = Listener(on_press=Input._on_press, on_release=Input._on_release)
         listener.start()
 
-    @classmethod
-    def update(cls):
-        cls._pressed_buffer = set()
-        cls._released_buffer = set()
+    @staticmethod
+    def update():
+        Input._pressed_buffer = set()
+        Input._released_buffer = set()
 
-    @classmethod
-    def _on_press(cls, key):
+    @staticmethod
+    def _on_press(key):
         try:
-            cls._pressed_buffer.add(key)
+            Input._pressed_buffer.add(key)
         except AttributeError:
             pass
 
-    @classmethod
-    def _on_release(cls, key):
-        cls._released_buffer.add(key)
+    @staticmethod
+    def _on_release(key):
+        Input._released_buffer.add(key)

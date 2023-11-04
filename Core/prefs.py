@@ -1,9 +1,11 @@
+from os import path
+
 class Prefs:
 
     _params : dict[str: int] = dict()
 
     def set_params():
-        file = open("../Prefs/Prefs.txt", "r")
+        file = open(path.join("Prefs", "prefs.txt"), "r")
         lines = file.readlines()
         
         for line in lines:

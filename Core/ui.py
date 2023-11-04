@@ -1,5 +1,5 @@
-from renderer import Sprite, Renderer, TYPE_UI
-from gameobject import GameObject, GameObjectManager
+from .renderer import Sprite, Renderer, TYPE_UI
+from .gameobject import GameObject, GameObjectManager
 
 
 class UIElement(GameObject):

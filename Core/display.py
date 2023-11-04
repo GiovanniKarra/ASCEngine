@@ -1,5 +1,5 @@
 import os
-from utils import log
+from .utils import log
 
 class Display:
 
@@ -8,40 +8,40 @@ class Display:
     _screen : list[list[str]]
 
 
-    @classmethod
-    def initialize(cls, width : int, height : int):
-        cls._width = width
-        cls._height = height
+    @staticmethod
+    def initialize(width : int, height : int):
+        Display._width = width
+        Display._height = height
 
-        cls._screen = [[" " for _ in range(width)] for _ in range(height)]
+        Display._screen = [[" " for _ in range(width)] for _ in range(height)]
 
 
-    @classmethod
-    def update(cls) -> None:
-        cls.clear()
-        rows = ["".join(r) for r in cls._screen]
+    @staticmethod
+    def update() -> None:
+        Display.clear()
+        rows = ["".join(r) for r in Display._screen]
         print("\n".join(rows))
         
-        cls._screen = [[" " for _ in range(cls._width)] for _ in range(cls._height)]
+        Display._screen = [[" " for _ in range(Display._width)] for _ in range(Display._height)]
 
 
-    @classmethod
-    def set_pixels(cls, value : str, screen_position : (int, int)) -> None:
+    @staticmethod
+    def set_pixels(value : str, screen_position : (int, int)) -> None:
         x, y = screen_position
         
-        if value == "" or value == "§" or x >= cls._width or y >= cls._height:
+        if value == "" or value == "§" or x >= Display._width or y >= Display._height:
             return
 
-        cls._screen[y][x] = value
+        Display._screen[y][x] = value
 
 
-    @classmethod
-    def get_size(cls) -> (int, int):
-        return cls._width, cls._height
+    @staticmethod
+    def get_size() -> (int, int):
+        return Display._width, Display._height
 
 
-    @classmethod
-    def clear(cls) -> None:
+    @staticmethod
+    def clear() -> None:
         os.system("cls" if os.name == "nt" else "clear")
 
 

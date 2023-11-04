@@ -1,4 +1,5 @@
-from renderer import Sprite, Renderer
+from .renderer import Sprite, Renderer
+from typing import Callable
 
 class GameObject:
     
@@ -43,25 +44,29 @@ class GameObjectManager:
     _gameobjects : list[GameObject]
 
 
-    @classmethod
-    def initialize(cls) -> None:
-        cls._gameobjects = []
+    @staticmethod
+    def initialize() -> None:
+        GameObjectManager._gameobjects = []
 
     
-    @classmethod
-    def update(cls) -> None:
-        for object in cls._gameobjects:
+    @staticmethod
+    def update() -> None:
+        for object in GameObjectManager._gameobjects:
             object.update()
             if (sprite := object.get_sprite()) is not None:
                 x, y = object.get_position()
                 Renderer.draw_sprite(sprite, (x, y))
 
 
-    @classmethod
-    def add_object(cls, object : GameObject) -> None:
-        cls._gameobjects.append(object)
+    @staticmethod
+    def add_object(object : GameObject) -> None:
+        GameObjectManager._gameobjects.append(object)
 
 
-    @classmethod
-    def remove_object(cls, object : GameObject) -> None:
-        cls._gameobjects.remove(object)
+    @staticmethod
+    def remove_object(object : GameObject) -> None:
+        GameObjectManager._gameobjects.remove(object)
+
+    @staticmethod
+    def get_objects(condition : Callable[[GameObject], tuple[GameObject]]):
+        return tuple(filter(condition, GameObjectManager._gameobjects))

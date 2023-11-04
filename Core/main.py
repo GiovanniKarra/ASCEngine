@@ -1,10 +1,10 @@
-from gameobject import GameObjectManager
-from renderer import Renderer
-from display import Display
+from .gameobject import GameObjectManager
+from .renderer import Renderer
+from .display import Display
 #from ui import UIManager
-from prefs import Prefs
-from input import Input
-from utils import log
+from .prefs import Prefs
+from .input import Input
+from .utils import log
 import time
 
 

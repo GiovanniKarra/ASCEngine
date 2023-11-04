@@ -1,0 +1,16 @@
+README.md
+setup.py
+Core/__init__.py
+Core/display.py
+Core/gameobject.py
+Core/input.py
+Core/main.py
+Core/prefs.py
+Core/renderer.py
+Core/test.py
+Core/ui.py
+Core/utils.py
+ascengine.egg-info/PKG-INFO
+ascengine.egg-info/SOURCES.txt
+ascengine.egg-info/dependency_links.txt
+ascengine.egg-info/top_level.txt

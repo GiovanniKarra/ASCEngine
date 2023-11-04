@@ -1,8 +1,7 @@
 from dataclasses import dataclass
-from display import Display
-from utils import log
-from enum import Enum
-from prefs import Prefs
+from .display import Display
+from .utils import log
+from .prefs import Prefs
 
 
 TYPE_BACKGROUND = 0
@@ -33,24 +32,24 @@ class Renderer:
         return Sprite(sprite, layer)
     
 
-    @classmethod
-    def draw_sprite(cls, sprite : Sprite, position : (int, int)) -> None:
+    @staticmethod
+    def draw_sprite(sprite : Sprite, position : (int, int)) -> None:
         x, y = position
         
-        if sprite.layer not in cls._torender[sprite.type]:
-            cls._torender[sprite.type][sprite.layer] = []
+        if sprite.layer not in Renderer._torender[sprite.type]:
+            Renderer._torender[sprite.type][sprite.layer] = []
         
-        cls._torender[sprite.type][sprite.layer].append((sprite, x, y))
+        Renderer._torender[sprite.type][sprite.layer].append((sprite, x, y))
 
     
-    @classmethod
-    def update(cls) -> None:
-        for i in sorted(cls._torender):
-            for j in sorted(cls._torender[i]):
-                for sprite, x, y in cls._torender[i][j]:
-                    cls.render(sprite.sprite, (x, y))
+    @staticmethod
+    def update() -> None:
+        for i in sorted(Renderer._torender):
+            for j in sorted(Renderer._torender[i]):
+                for sprite, x, y in Renderer._torender[i][j]:
+                    Renderer.render(sprite.sprite, (x, y))
 
-        cls._torender = {
+        Renderer._torender = {
             TYPE_BACKGROUND : dict(),
             TYPE_GAMEOBJECT : dict(),
             TYPE_UI : dict()
