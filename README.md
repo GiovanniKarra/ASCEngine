@@ -13,6 +13,13 @@ When you want to update your version, use :
 
 There you go, that's all it takes !
 
+### Dependencies
+
+The code depends on these python packages : pynput, consoledraw
+
+You can install them by using :
+
+    pip install <package_name>
 
 ## Creating a project
 
