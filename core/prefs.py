@@ -1,5 +1,6 @@
 from os import path
 
+
 class Prefs:
 
     _params : dict[str: int] = dict()
@@ -13,4 +14,5 @@ class Prefs:
             Prefs._params[name] = int(value)
 
     def get_param(param : str) -> int:
+        """Returns the value of the parameter param"""
         return Prefs._params[param]

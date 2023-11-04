@@ -6,19 +6,19 @@ width = input("Width : ")
 height = input("Height : ")
 tickrate = input("Tickrate : ")
 
-if not path.exists(path.join(path.curdir, "Projects")):
-    os.mkdir("Projects")
+if not path.exists(path.join(path.curdir, "projects")):
+    os.mkdir("projects")
 
 main_dir = os.getcwd()
 
-os.chdir("Projects")
+os.chdir("projects")
 os.mkdir(name)
 os.chdir(name)
 
 project_dir = os.getcwd()
 
-os.mkdir("Prefs")
-os.chdir("Prefs")
+os.mkdir("prefs")
+os.chdir("prefs")
 
 f = open("prefs.txt", "w")
 f.write(f"width:{width}\nheight:{height}\ntickrate:{tickrate}")

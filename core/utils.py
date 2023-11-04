@@ -1,11 +1,5 @@
 from datetime import datetime
 
-log_file = open("log.txt", "w")
-log_file.write("")
-
-error_log_file = open("errorlog.txt", "w")
-error_log_file.write("")
-
 
 def reset_log():
     log_file = open("log.txt", "w")

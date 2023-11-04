@@ -8,10 +8,12 @@ class Input:
 
     @staticmethod
     def keypressed(key : Key) -> bool:
+        """Returns True if key was pressed during the last tick, False otherwise"""
         return key in Input._pressed_buffer
     
     @staticmethod
     def keyreleased(key : Key) -> bool:
+        """Returns True if key was released during the last tick, False otherwise"""
         return key in Input._released_buffer
 
     @staticmethod

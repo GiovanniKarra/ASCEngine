@@ -1,4 +1,4 @@
-from .renderer import Sprite, Renderer, TYPE_UI
+from .renderer import Sprite, TYPE_UI
 from .gameobject import GameObject, GameObjectManager
 
 

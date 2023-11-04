@@ -1,11 +1,12 @@
+import time
+
 from .gameobject import GameObjectManager
 from .renderer import Renderer
 from .display import Display
 #from ui import UIManager
 from .prefs import Prefs
 from .input import Input
-from .utils import log
-import time
+from .utils import reset_log
 
 
 def initialize_components():
@@ -18,6 +19,7 @@ def initialize_components():
 
 
 def main_loop():
+    """The main logic loop of the engine that updates the system each tick"""
     tickrate = Prefs.get_param("tickrate")
     ticktime = 1/tickrate
 
@@ -36,7 +38,9 @@ def main_loop():
 
 
 def initialize_engine():
+    """Initialization of the system"""
     Prefs.set_params()
+    reset_log()
     initialize_components()
 
 

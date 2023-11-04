@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 from .display import Display
 from .utils import log
 from .prefs import Prefs
@@ -11,9 +12,10 @@ TYPE_UI = 2
 
 @dataclass
 class Sprite:
+    """Dataclass representing sprites"""
     sprite : list[list[str]]
     layer : int
-    type : int = TYPE_GAMEOBJECT
+    type : int
 
 
 class Renderer:
@@ -25,15 +27,19 @@ class Renderer:
     }
 
     @staticmethod
-    def create_sprite_from_string(string : str, layer : int = 0) -> Sprite:
+    def create_sprite_from_string(
+        string : str, layer : int = 0, type : int = TYPE_GAMEOBJECT) -> Sprite:
+        """Returns a sprite type from a string"""
+
         lines : list[str] = string.split("\n")
         sprite : list[list[str]] = [list(lines[i]) for i in range(len(lines))]
 
-        return Sprite(sprite, layer)
+        return Sprite(sprite, layer, type)
     
 
     @staticmethod
     def draw_sprite(sprite : Sprite, position : (int, int)) -> None:
+        """Draws sprite at position"""
         x, y = position
         
         if sprite.layer not in Renderer._torender[sprite.type]:
@@ -58,6 +64,7 @@ class Renderer:
 
     @staticmethod
     def render(sprite : list[list[str]], position : (int, int)) -> None:
+        """DON'T USE"""
         x, y = position
 
         for i in range(len(sprite)):
