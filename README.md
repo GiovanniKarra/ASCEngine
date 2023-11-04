@@ -5,11 +5,11 @@ Game engine for ASCII games that run in the terminal like in the good old days
 
 Start by either extracting the zip file, or cloning the repo to install the updates easily by using this command :
 
-> git clone git@github.com:GiovanniKarra/ASCEngine.git
+    git clone git@github.com:GiovanniKarra/ASCEngine.git
 
 When you want to update your version, use : 
 
-> git pull
+    git pull
 
 There you go, that's all it takes !
 
