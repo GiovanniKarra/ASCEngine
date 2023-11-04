@@ -21,13 +21,13 @@ class GameObject:
 
     def set_position(self, x : int, y : int) -> None:
         """Set the objects position to x, y"""
-        self.x = x
-        self.y = y
+        self._x = x
+        self._y = y
 
 
     def get_position(self) -> (int, int):
         """Returns the object's position (x, y)"""
-        return self.x, self.y
+        return self._x, self._y
 
 
     def destroy(self) -> None:
