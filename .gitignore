@@ -1,4 +1,4 @@
 .vscode/
-Core/__pycache__/
-Projects/
+core/__pycache__/
+projects/
 log.txt

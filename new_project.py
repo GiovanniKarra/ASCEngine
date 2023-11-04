@@ -27,10 +27,10 @@ f.close()
 os.chdir(project_dir)
 
 f = open("main.py", "w")
-f.write("from Core import *\n\n\n"\
+f.write("from core import *\n\n\n"\
         "if __name__ == \"__main__\":\n"\
-        "   initialize_engine()\n\n"\
-        "   # YOUR CODE\n\n"\
-        "   main_loop()\n")
+        "    initialize_engine()\n\n"\
+        "    # YOUR CODE\n\n"\
+        "    main_loop()\n")
 
 f.close()
