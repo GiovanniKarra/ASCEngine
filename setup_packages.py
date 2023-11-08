@@ -7,6 +7,6 @@ system("pip install termcolor")
 
 system("pip install -e .")
 
-input("DONE\nThis file is going to be deleted\nPress ENTER to continue")
+input("\nDONE\nThis file is going to be deleted\nPress ENTER to continue")
 
 remove(argv[0])

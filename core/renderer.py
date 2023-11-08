@@ -1,19 +1,54 @@
 from dataclasses import dataclass
 
+from termcolor import colored
+
 from .display import Display
 from .utils import log
 from .prefs import Prefs
 
 
-TYPE_BACKGROUND = 0
-TYPE_GAMEOBJECT = 1
-TYPE_UI = 2
+class SPRITE_TYPE:
+    BACKGROUND = 0
+    GAMEOBJECT = 1
+    UI = 2
 
+
+class COLOR:
+    RED = "red"
+    BLUE = "blue"
+    GREEN = "green"
+    YELLOW = "yellow"
+    BLACK = "black"
+    MAGENTA = "magenta"
+    CYAN = "cyan"
+    WHITE = "white"
+    LIGHT_GREY = "light_grey"
+    DARK_GREY = "dark_grey"
+    LIGHT_RED = "light_red"
+    LIGHT_GREEN = "light_green"
+    LIGHT_YELLOW = "light_yellow"
+    LIGHT_BLUE = "light_blue"
+    LIGHT_MAGENTA = "light_magenta"
+    LIGHT_CYAN = "light_cyan"
+
+    BOLD = "bold"
+    DARK = "dark"
+    UNDERLINE = "underline"
+    BLINK = "blink"
+    REVERSE = "reverse"
+    CONCEALED = "concealed"
+
+    BACKGROUND_COLOR = "on_"
+
+
+Color = str
+CharMatrix = list[list[str]]
 
 @dataclass
 class Sprite:
     """Dataclass representing sprites"""
-    sprite : list[list[str]]
+    sprite : CharMatrix
+    color : Color
     layer : int
     type : int
 
@@ -21,14 +56,14 @@ class Sprite:
 class Renderer:
 
     _torender : dict[int: dict[int: list[(Sprite, int, int)]]] = {
-        TYPE_BACKGROUND : dict(),
-        TYPE_GAMEOBJECT : dict(),
-        TYPE_UI : dict()
+        SPRITE_TYPE.BACKGROUND : dict(),
+        SPRITE_TYPE.GAMEOBJECT : dict(),
+        SPRITE_TYPE.UI : dict()
     }
 
     @staticmethod
     def create_sprite_from_string(
-        string : str, layer : int = 0, type : int = TYPE_GAMEOBJECT) -> Sprite:
+        string : str, layer : int = 0, type : int = SPRITE_TYPE.GAMEOBJECT) -> Sprite:
         """Returns a sprite type from a string"""
 
         lines : list[str] = string.split("\n")
@@ -56,9 +91,9 @@ class Renderer:
                     Renderer.render(sprite.sprite, (x, y))
 
         Renderer._torender = {
-            TYPE_BACKGROUND : dict(),
-            TYPE_GAMEOBJECT : dict(),
-            TYPE_UI : dict()
+            SPRITE_TYPE.BACKGROUND : dict(),
+            SPRITE_TYPE.GAMEOBJECT : dict(),
+            SPRITE_TYPE.UI : dict()
         }
 
 

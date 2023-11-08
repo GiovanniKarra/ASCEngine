@@ -1,4 +1,4 @@
-from .renderer import Sprite, TYPE_UI
+from .renderer import Sprite, SPRITE_TYPE
 from .gameobject import GameObject, GameObjectManager
 
 
@@ -19,7 +19,7 @@ class UIElement(GameObject):
 
     
     def set_sprite(self, sprite: Sprite) -> None:
-        sprite.type = TYPE_UI
+        sprite.type = SPRITE_TYPE.UI
         super().set_sprite(sprite)
 
 
