@@ -11,6 +11,8 @@ When you want to update your version, use :
 
     git pull
 
+Run `setup_packages.py` to setup the ascengine package, and to install [dependencies](#dependencies).
+
 There you go, that's all it takes !
 
 ### Dependencies
@@ -21,6 +23,8 @@ You can install them by using :
 
     pip install <package_name>
 
+Or by running `setup_packages.py`
+
 ## Creating a project
 
 In the engine's installation folder, you'll find a `new_project.py` file, run it in order to create a `projects` folder with a project template.
@@ -30,6 +34,6 @@ The template includes a `main.py` file, containing the main logic that you need,
 
 ## Feedback
 
-The project is far from being complete. You can post any problem you encounter or any suggestion as an issue here on github
+The project is far from being complete. You can post any problem you encounter or any suggestion as an issue here on github.
 
 ### Enjoy !
