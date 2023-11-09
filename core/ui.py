@@ -1,4 +1,4 @@
-from .renderer import Sprite, SPRITE_TYPE
+from .sprite import Sprite, SPRITE_TYPE
 from .gameobject import GameObject, GameObjectManager
 
 

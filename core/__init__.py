@@ -5,3 +5,4 @@ from .display import *
 from .utils import *
 from .ui import *
 from .input import *
+from .sprite import *

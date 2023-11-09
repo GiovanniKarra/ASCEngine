@@ -1,9 +1,6 @@
 import os
 
-from consoledraw import Console
-
-
-console = Console()
+from .utils import log
 
 
 class Display:
@@ -26,11 +23,14 @@ class Display:
     @staticmethod
     def update() -> None:
         """Update the display"""
-        #Display.clear()
-        console.clear()
-        rows = ["".join(r) for r in Display._screen]
-        console.print("\n".join(rows))
-        console.update()
+        to_print = "\n".join(["".join(r) for r in Display._screen])
+
+        # console.clear()
+        # console.write(to_print)
+        # console.update()
+
+        Display.clear()
+        print(to_print)
         
         Display._screen = [[" " for _ in range(Display._width)] for _ in range(Display._height)]
 
@@ -42,7 +42,7 @@ class Display:
         
         if value == "" or value == "§" or x >= Display._width or y >= Display._height:
             return
-
+        
         Display._screen[y][x] = value
 
 
@@ -55,7 +55,8 @@ class Display:
     @staticmethod
     def clear() -> None:
         """Clears the display"""
-        os.system("cls" if os.name == "nt" else "clear")
+        #os.system("cls" if os.name == "nt" else "clear")
+        print(end="\033[0;0f")
 
 
 if __name__ == "__main__":

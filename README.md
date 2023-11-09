@@ -1,6 +1,12 @@
 # ASCEngine
 Game engine for ASCII games that run in the terminal like in the good old days
 
+## Table of contents
+- [Installation](#installation)
+    - [Dependencies](#dependencies)
+- [New project](#creating-a-project)
+- [Feedback](#feedback)
+
 ## Installation
 
 Start by either extracting the zip file, or cloning the repo to install the updates easily by using this command :
@@ -17,7 +23,7 @@ There you go, that's all it takes !
 
 ### Dependencies
 
-The code depends on these python packages : pynput, consoledraw
+The code depends on these python packages : pynput, termcolor
 
 You can install them by using :
 
