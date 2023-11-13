@@ -14,6 +14,8 @@ class Display:
     @staticmethod
     def initialize(width : int, height : int):
         """Initialize the display with a given width and height"""
+        os.system("cls" if os.name == "nt" else "clear")
+
         Display._width = width
         Display._height = height
 
@@ -40,7 +42,7 @@ class Display:
         """Set the pixel at screen_position to value"""
         x, y = screen_position
         
-        if value == "" or value == "§" or x >= Display._width or y >= Display._height:
+        if value == "" or "§" in value or x >= Display._width or y >= Display._height:
             return
         
         Display._screen[y][x] = value

@@ -1,19 +1,25 @@
-from pynput.keyboard import Key, Listener
+from pynput.keyboard import Key, Listener, KeyCode
+
+from .utils import log
 
 
 class Input:
 
-    _pressed_buffer : set[Key] = set()
-    _released_buffer : set[Key] = set()
+    _pressed_buffer : set[Key | str] = set()
+    _released_buffer : set[Key | str] = set()
 
     @staticmethod
-    def keypressed(key : Key) -> bool:
+    def keypressed(key : Key | str) -> bool:
         """Returns True if key was pressed during the last tick, False otherwise"""
+        if type(key) == str:
+            key = KeyCode.from_char(key)
         return key in Input._pressed_buffer
     
     @staticmethod
-    def keyreleased(key : Key) -> bool:
+    def keyreleased(key : Key | str) -> bool:
         """Returns True if key was released during the last tick, False otherwise"""
+        if type(key) == str:
+            key = KeyCode.from_char(key)
         return key in Input._released_buffer
 
     @staticmethod
