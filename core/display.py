@@ -42,7 +42,11 @@ class Display:
         """Set the pixel at screen_position to value"""
         x, y = screen_position
         
-        if value == "" or "§" in value or x >= Display._width or y >= Display._height:
+        if "§" in value:
+            Display.set_pixels(value.strip("§"), screen_position)
+            return
+
+        if value == "" or x >= Display._width or y >= Display._height:
             return
         
         Display._screen[y][x] = value

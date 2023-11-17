@@ -1,5 +1,4 @@
-from dataclasses import dataclass
-
+from .utils import log
 
 class SPRITE_TYPE:
     BACKGROUND = 0
@@ -7,54 +6,97 @@ class SPRITE_TYPE:
     UI = 2
 
 
+def colored(text : str, color : int, *parameters : int):
+    "Returns the colored text. The colors and various parameters can be found in the COLOR class"
+    to_return = ""
+
+    if len(lines := text.split("\n")) > 1:
+        to_return =\
+            [f"\033[{color}{''.join(f';{param}' for param in parameters)}m{line}\033[0m"\
+             for line in lines]
+    
+    return "\n".join(to_return)
+
+
 class COLOR:
-    RED = "red"
-    BLUE = "blue"
-    GREEN = "green"
-    YELLOW = "yellow"
-    BLACK = "black"
-    MAGENTA = "magenta"
-    CYAN = "cyan"
-    WHITE = "white"
-    LIGHT_GREY = "light_grey"
-    DARK_GREY = "dark_grey"
-    LIGHT_RED = "light_red"
-    LIGHT_GREEN = "light_green"
-    LIGHT_YELLOW = "light_yellow"
-    LIGHT_BLUE = "light_blue"
-    LIGHT_MAGENTA = "light_magenta"
-    LIGHT_CYAN = "light_cyan"
 
-    BOLD = "bold"
-    DARK = "dark"
-    UNDERLINE = "underline"
-    BLINK = "blink"
-    REVERSE = "reverse"
-    CONCEALED = "concealed"
+    RESET = 0
 
-    BACKGROUND_COLOR = "on_"
+    # Colors
+    RED = 31
+    BLUE = 34
+    GREEN = 32
+
+    # Attributes
+    BOLD = 1
+    UNDERLINE = 4
 
 
-Color = str
 CharMatrix = list[list[str]]
 
 
 class Sprite:
     """a class representing sprites"""
 
-    def __init__(self, sprite : CharMatrix, color : Color, layer : int, type : int) -> None:
+    def __init__(self, sprite : CharMatrix, layer : int, type : int) -> None:
         self.sprite : CharMatrix = sprite
-        self.color : Color = color
         self.layer : int = layer
         self.type : int = type
 
+
     @staticmethod
     def create_sprite_from_string(
-        string : str, color : Color = COLOR.WHITE,
-        layer : int = 0, type : int = SPRITE_TYPE.GAMEOBJECT) -> "Sprite":
+        string : str, layer : int = 0, type : int = SPRITE_TYPE.GAMEOBJECT) -> "Sprite":
         """Returns a sprite type from a string"""
 
-        lines : list[str] = string.split("\n")
-        sprite : list[list[str]] = [list(lines[i]) for i in range(len(lines))]
+        sprite : CharMatrix = Sprite._separate_characters(string)
+        log(sprite)
 
-        return Sprite(sprite, color, layer, type)
+        return Sprite(sprite, layer, type)
+    
+
+    @staticmethod
+    def _separate_characters(string : str) -> CharMatrix:
+        lines : list[str] = string.split("\n")
+        char_matrix = []
+
+        for line in lines:
+            pre_process_line = [""]
+            post_process_line = []
+            char_matrix.append(post_process_line)
+
+            color_mode = False
+            for char in line:
+                if char == "\x1b":
+                    color_mode = True
+
+                pre_process_line[-1] += char
+
+                if color_mode:
+                    if char == "m":
+                        color_mode = False
+                    else:
+                        continue
+
+                pre_process_line.append("")
+            
+            if pre_process_line[-1] == "":
+                pre_process_line.pop()
+
+            i = 0
+            while i < len(pre_process_line):
+                to_append = pre_process_line[i]
+                if "\x1b" in to_append:
+                    if i == len(pre_process_line)-1:
+                        post_process_line[-1] += to_append
+                        break
+                    else:
+                        i += 1
+                        to_append += pre_process_line[i]
+                
+                post_process_line.append(to_append)
+                i += 1
+
+
+        return char_matrix
+                

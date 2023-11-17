@@ -1,5 +1,3 @@
-from termcolor import colored
-
 from .display import Display
 from .utils import log
 from .prefs import Prefs
@@ -51,4 +49,4 @@ class Renderer:
                 if x+j >= 0 and x+j < Prefs.get_param("width")\
                         and y+i >= 0 and y+i < Prefs.get_param("height"):
                     
-                    Display.set_pixels(colored(char_matrix[i][j], sprite.color), (x+j, y+i))
+                    Display.set_pixels(char_matrix[i][j], (x+j, y+i))
