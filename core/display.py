@@ -27,10 +27,6 @@ class Display:
         """Update the display"""
         to_print = "\n".join(["".join(r) for r in Display._screen])
 
-        # console.clear()
-        # console.write(to_print)
-        # console.update()
-
         Display.clear()
         print(to_print)
         

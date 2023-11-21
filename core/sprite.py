@@ -8,12 +8,11 @@ class SPRITE_TYPE:
 
 def colored(text : str, color : int, *parameters : int):
     "Returns the colored text. The colors and various parameters can be found in the COLOR class"
-    to_return = ""
 
-    if len(lines := text.split("\n")) > 1:
-        to_return =\
-            [f"\033[{color}{''.join(f';{param}' for param in parameters)}m{line}\033[0m"\
-             for line in lines]
+    lines = text.split("\n")
+    to_return =\
+        [f"\033[{color}{''.join(f';{param}' for param in parameters)}m{line}\033[0m"\
+            for line in lines]
     
     return "\n".join(to_return)
 
