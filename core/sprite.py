@@ -7,12 +7,16 @@ class SPRITE_TYPE:
 
 
 def colored(text : str, color : int, *parameters : int):
-    "Returns the colored text. The colors and various parameters can be found in the COLOR class"
+    """
+    Returns the colored text.
+    The colors and various parameters can be found in the COLOR class
+    """
 
     lines = text.split("\n")
     to_return =\
-        [f"\033[{color}{''.join(f';{param}' for param in parameters)}m{line}\033[0m"\
-            for line in lines]
+        ["".join([f"\033[{color}{''.join(f';{param}' for param in parameters)}m"\
+         f"{char}" for char in line])\
+         + "\033[0m" for line in lines]
     
     return "\n".join(to_return)
 
@@ -37,7 +41,9 @@ CharMatrix = list[list[str]]
 class Sprite:
     """a class representing sprites"""
 
-    def __init__(self, sprite : CharMatrix, layer : int, type : int) -> None:
+    def __init__(self, sprite : CharMatrix | str, layer : int, type : int) -> None:
+        if isinstance(sprite, str):
+            sprite = Sprite.create_sprite_from_string(sprite, layer, type)
         self.sprite : CharMatrix = sprite
         self.layer : int = layer
         self.type : int = type
