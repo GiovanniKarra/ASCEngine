@@ -1,4 +1,5 @@
 import time
+import os
 
 from .gameobject import GameObjectManager
 from .renderer import Renderer
@@ -10,6 +11,10 @@ from .utils import reset_log
 
 
 def initialize_components():
+    if os.name == "nt":
+        from colorama import just_fix_windows_console
+        just_fix_windows_console()
+
     width, height = Prefs.get_param("width"), Prefs.get_param("height")
 
     Display.initialize(width, height)
