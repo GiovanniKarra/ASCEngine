@@ -26,13 +26,21 @@ class COLOR:
     RESET = 0
 
     # Colors
+    BLACK = 30
     RED = 31
-    BLUE = 34
     GREEN = 32
+    YELLOW = 33
+    BLUE = 34
+    MAGENTA = 35
+    CYAN = 36
+    WHITE = 37
 
     # Attributes
     BOLD = 1
     UNDERLINE = 4
+
+    # Special
+    BG = 10 # must be added to the color
 
 
 CharMatrix = list[list[str]]
