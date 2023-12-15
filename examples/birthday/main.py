@@ -86,6 +86,10 @@ class Letter(GameObject):
 
 
 if __name__ == "__main__":
+    Prefs.set_param("width", 60)
+    Prefs.set_param("height", 40)
+    Prefs.set_param("tickrate", 30)
+    
     initialize_engine()
 
     j = Joyeux()

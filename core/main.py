@@ -44,7 +44,7 @@ def main_loop():
 
 def initialize_engine():
     """Initialization of the system"""
-    Prefs.set_params()
+    if not Prefs.accessed(): Prefs.set_default_params()
     reset_log()
     initialize_components()
 
