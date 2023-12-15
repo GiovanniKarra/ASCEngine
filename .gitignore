@@ -1,6 +1,6 @@
 .vscode/
 core/__pycache__/
-projects/
+test/
 log.txt
 errorlog.txt
 ascengine.egg-info/
