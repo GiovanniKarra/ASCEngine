@@ -1,5 +1,5 @@
 .vscode/
-core/__pycache__/
+ascengine/*/__pycache__/
 test/
 log.txt
 errorlog.txt

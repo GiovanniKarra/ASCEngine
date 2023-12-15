@@ -1,4 +1,4 @@
-from core import *
+from ascengine.core import *
 
 if __name__ == "__main__":
     # Manual parameter setting

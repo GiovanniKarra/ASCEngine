@@ -1,4 +1,4 @@
-from core import *
+from ascengine.core import *
 
 class Joyeux(GameObject):
     def __init__(self):
