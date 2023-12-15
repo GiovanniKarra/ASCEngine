@@ -25,9 +25,9 @@ There you go, that's all it takes !
 
 The code depends on these python packages : pynput, colorama (only on Windows)
 
-## Creating a project
+## Examples
 
-In the engine's installation folder, you'll find a `new_project.py` file, run it in order to create a `projects` folder with a project template.
+In the engine's installation folder, you'll find an `examples/` directory that contains multiple usage examples, including a project template.
 
 The template includes a `main.py` file, containing the main logic that you need, it's the file that runs your game.
 
