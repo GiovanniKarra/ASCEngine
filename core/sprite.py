@@ -49,9 +49,10 @@ CharMatrix = list[list[str]]
 class Sprite:
     """a class representing sprites"""
 
-    def __init__(self, sprite : CharMatrix | str, layer : int, type : int) -> None:
+    def __init__(self, sprite : CharMatrix | str, layer : int = 0,
+                 type : int = SPRITE_TYPE.GAMEOBJECT) -> None:
         if isinstance(sprite, str):
-            sprite = Sprite.create_sprite_from_string(sprite, layer, type)
+            sprite = Sprite._separate_characters(sprite)
         self.sprite : CharMatrix = sprite
         self.layer : int = layer
         self.type : int = type

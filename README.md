@@ -23,7 +23,7 @@ There you go, that's all it takes !
 
 ### Dependencies
 
-The code depends on these python packages : pynput, termcolor
+The code depends on these python packages : pynput, colorama (only on Windows)
 
 You can install them by using :
 

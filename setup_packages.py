@@ -1,8 +1,8 @@
-from os import system, remove
+from os import system, remove, name
 from sys import argv
 
 system("pip install pynput")
-system("pip install termcolor")
+if name == "nt": system("pip install colorama")
 
 system("pip install -e .")
 
