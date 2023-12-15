@@ -1,6 +1,3 @@
-from os import path
-
-
 class Prefs:
 
     _params : dict[str: int | str | float] = {
