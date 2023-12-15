@@ -3,8 +3,7 @@ from ascengine.core import *
 class Joyeux(GameObject):
     def __init__(self):
         super().__init__()
-        sprite : Sprite = Sprite.create_sprite_from_string(colored("JOYEUX",
-                                                                   COLOR.BOLD))
+        sprite : Sprite = Sprite(colored("JOYEUX", COLOR.BOLD))
         self.set_sprite(sprite)
         self.set_position(10, -50)
 
@@ -24,8 +23,7 @@ class Joyeux(GameObject):
 class Anniversaire(GameObject):
     def __init__(self):
         super().__init__()
-        sprite : Sprite = Sprite.create_sprite_from_string(colored("ANNIVERSAIRE",
-                                                                   38, 5, 206, COLOR.BOLD))
+        sprite : Sprite = Sprite(colored("ANNIVERSAIRE", 38, 5, 206, COLOR.BOLD))
         self.set_sprite(sprite)
         self.set_position(17, -100)
 
@@ -37,16 +35,15 @@ class Anniversaire(GameObject):
         if y < 20:
             self.set_position(x, y+1)
         else:
-            sprite : Sprite = Sprite.create_sprite_from_string(colored("ANNIVERSAIRE",
-                                                            38, 5, 206, COLOR.BOLD, COLOR.UNDERLINE))
+            sprite : Sprite = Sprite(colored("ANNIVERSAIRE", 38, 5, 206, COLOR.BOLD,
+                                             COLOR.UNDERLINE))
             self.set_sprite(sprite)
 
 
 class Letter(GameObject):
     def __init__(self, letter, id):
         super().__init__()
-        sprite : Sprite = Sprite.create_sprite_from_string(colored(letter,
-                                                                   id+90, COLOR.BOLD))
+        sprite : Sprite = Sprite(colored(letter, id+90, COLOR.BOLD))
         self.set_sprite(sprite)
         self.set_position(200 + 10*id, 30)
         self.id = id

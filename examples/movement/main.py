@@ -4,15 +4,13 @@ from ascengine.core import *
 if __name__ == "__main__":
     initialize_engine()
 
-    sprite1 : Sprite = Sprite.create_sprite_from_string(colored("000\n"\
-                                                                "000",
-                                                        COLOR.RED, COLOR.BOLD))
+    sprite1 : Sprite = Sprite(colored("000\n"\
+                                      "000", COLOR.RED, COLOR.BOLD))
     
-    sprite2 : Sprite = Sprite.create_sprite_from_string("§" + colored("X\n"\
-                                                                "XXX",
-                                                        COLOR.BLUE, COLOR.BOLD, COLOR.UNDERLINE))
+    sprite2 : Sprite = Sprite("§" + colored("X\n"\
+                                            "XXX", COLOR.BLUE, COLOR.BOLD, COLOR.UNDERLINE))
 
-    ui_sprite : Sprite = Sprite.create_sprite_from_string("Ceci est du texte")
+    ui_sprite : Sprite = Sprite("Ceci est du texte")
 
     class G(GameObject):
         def __init__(self):
