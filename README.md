@@ -17,19 +17,13 @@ When you want to update your version, use :
 
     git pull
 
-Run `setup_packages.py` to setup the ascengine package, and to install [dependencies](#dependencies).
+Run `pip install .` in the install directory to setup the ascengine package, with [dependencies](#dependencies) included.
 
 There you go, that's all it takes !
 
 ### Dependencies
 
 The code depends on these python packages : pynput, colorama (only on Windows)
-
-You can install them by using :
-
-    pip install <package_name>
-
-Or by running `setup_packages.py`
 
 ## Creating a project
 

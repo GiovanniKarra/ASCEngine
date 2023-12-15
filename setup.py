@@ -1,3 +1,10 @@
 from setuptools import setup, find_packages
+from os import name, system
 
-setup(name="ascengine", version='0.0.1', packages=find_packages())
+system("pip install pynput")
+if name == "nt": system("pip install colorama")
+
+setup(name="ascengine",
+      version="0.0.3",
+      #packages=["pynput"])#+["colorama"]*int(name == "nt")))
+      packages=find_packages())

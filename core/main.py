@@ -4,10 +4,10 @@ import os
 from .gameobject import GameObjectManager
 from .renderer import Renderer
 from .display import Display
-#from ui import UIManager
+#from .ui import UIManager
 from .prefs import Prefs
 from .input import Input
-from .utils import reset_log
+from .utils import reset_log, log
 
 
 def initialize_components():
