@@ -12,7 +12,7 @@ class Joyeux(GameObject):
 
         x, y = self.get_position()
 
-        if y < 20:
+        if y < 15:
             self.set_position(x, y+1)
         else:
             sprite : Sprite = Sprite.create_sprite_from_string(colored("JOYEUX",
@@ -32,7 +32,7 @@ class Anniversaire(GameObject):
 
         x, y = self.get_position()
 
-        if y < 20:
+        if y < 15:
             self.set_position(x, y+1)
         else:
             sprite : Sprite = Sprite(colored("ANNIVERSAIRE", 38, 5, 206, COLOR.BOLD,
@@ -45,7 +45,7 @@ class Letter(GameObject):
         super().__init__()
         sprite : Sprite = Sprite(colored(letter, id+90, COLOR.BOLD))
         self.set_sprite(sprite)
-        self.set_position(200 + 10*id, 30)
+        self.set_position(200 + 10*id, 22)
         self.id = id
         self.phase = 0
 
@@ -71,7 +71,7 @@ class Letter(GameObject):
                 else:
                     self.phase += 1
             case 3:
-                if y < 21:
+                if y < 16:
                     self.set_position(x, y+1)
                 else:
                     self.phase += 1
@@ -84,7 +84,7 @@ class Letter(GameObject):
 
 if __name__ == "__main__":
     Prefs.set_param("width", 60)
-    Prefs.set_param("height", 40)
+    Prefs.set_param("height", 30)
     Prefs.set_param("tickrate", 30)
     
     initialize_engine()
