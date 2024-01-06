@@ -43,5 +43,7 @@ if __name__ == "__main__":
 
     g = G()
     f = F()
-
+    uielem = UIElement()
+    uielem.set_position(5, 0)
+    uielem.set_sprite(ui_sprite)
     main_loop()

@@ -15,7 +15,7 @@ def initialize_components():
         from colorama import just_fix_windows_console
         just_fix_windows_console()
 
-    width, height = Prefs.get_param("width"), Prefs.get_param("height")
+    width, height = int(Prefs.get_param("width")), int(Prefs.get_param("height"))
 
     Display.initialize(width, height)
     GameObjectManager.initialize()
@@ -25,7 +25,7 @@ def initialize_components():
 
 def main_loop():
     """The main logic loop of the engine that updates the system each tick"""
-    tickrate = Prefs.get_param("tickrate")
+    tickrate = int(Prefs.get_param("tickrate"))
     ticktime = 1/tickrate
 
     while True:

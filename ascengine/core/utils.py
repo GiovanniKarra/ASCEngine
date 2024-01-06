@@ -11,13 +11,13 @@ def reset_log():
     error_log_file.close()
 
 
-def log(message : str):
+def log(message):
     log_file = open("log.txt", "a")
     log_file.write(f"[{datetime.now().strftime(r'%d/%m/%Y %H:%M:%S')}] {message}\n")
     log_file.close()
 
 
-def log_error(message : str):
+def log_error(message):
     error_log_file = open("errorlog.txt", "a")
     error_log_file.write(f"[{datetime.now().strftime(r'%d/%m/%Y %H:%M:%S')}] {message}\n")
     error_log_file.close()

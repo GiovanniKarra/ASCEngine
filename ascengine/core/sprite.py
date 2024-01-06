@@ -1,4 +1,4 @@
-from .utils import log
+from ascengine.core.utils import log
 
 class SPRITE_TYPE:
     BACKGROUND = 0
@@ -49,9 +49,11 @@ CharMatrix = list[list[str]]
 class Sprite:
     """a class representing sprites"""
 
-    def __init__(self, sprite : CharMatrix | str, layer : int = 0,
+    def __init__(self, sprite : CharMatrix | str = [[""]], layer : int = 0,
                  type : int = SPRITE_TYPE.GAMEOBJECT) -> None:
         if isinstance(sprite, str):
+            if "\x1b" not in sprite:
+                sprite = colored(sprite, COLOR.RESET)
             sprite = Sprite._separate_characters(sprite)
         self.sprite : CharMatrix = sprite
         self.layer : int = layer
@@ -113,4 +115,4 @@ class Sprite:
 
 
         return char_matrix
-                
+

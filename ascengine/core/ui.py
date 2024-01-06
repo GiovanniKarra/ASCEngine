@@ -5,12 +5,13 @@ from .gameobject import GameObject, GameObjectManager
 class UIElement(GameObject):
     
     def __init__(self):
-        self._x : int = 0
-        self._y : int = 0
-        self._sprite : Sprite = None
-        self.tickcount : int = 0
+        #self._x : int = 0
+        #self._y : int = 0
+        #self._sprite : Sprite = None
+        #self.tickcount : int = 0
 
-        GameObjectManager.add_object(self)
+        #GameObjectManager.add_object(self)
+        super().__init__()
 
 
     def destroy(self) -> None:
