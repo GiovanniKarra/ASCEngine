@@ -12,6 +12,6 @@ class Prefs:
         return Prefs._params[param]
     
     @staticmethod
-    def set_param(param : str, value : str) -> None:
+    def set_param(param : str, value : str | int | float) -> None:
         """Sets the parameter param to value"""
-        Prefs._params[param] = value
+        Prefs._params[param] = str(value)

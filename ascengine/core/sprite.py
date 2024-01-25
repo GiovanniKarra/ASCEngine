@@ -1,4 +1,4 @@
-from ascengine.core.utils import log
+from .utils import log
 
 class SPRITE_TYPE:
     BACKGROUND = 0
@@ -54,6 +54,7 @@ class Sprite:
         if isinstance(sprite, str):
             if "\x1b" not in sprite:
                 sprite = colored(sprite, COLOR.RESET)
+                log(sprite)
             sprite = Sprite._separate_characters(sprite)
         self.sprite : CharMatrix = sprite
         self.layer : int = layer
@@ -115,4 +116,3 @@ class Sprite:
 
 
         return char_matrix
-

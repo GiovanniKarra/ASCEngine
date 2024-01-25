@@ -68,11 +68,13 @@ class GameObjectManager:
 
     @staticmethod
     def add_object(object : GameObject) -> None:
+        """Adds an object to the manager's list of objects"""
         GameObjectManager._gameobjects.append(object)
 
 
     @staticmethod
     def remove_object(object : GameObject) -> None:
+        """Removes an object from the manager's list of objects"""
         GameObjectManager._gameobjects.remove(object)
 
     @staticmethod
