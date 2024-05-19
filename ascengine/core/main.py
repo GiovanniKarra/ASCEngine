@@ -16,7 +16,7 @@ def initialize_components():
         just_fix_windows_console()
 
     width, height = int(Prefs.get_param("width")), int(Prefs.get_param("height"))
-
+    
     Display.initialize(width, height)
     GameObjectManager.initialize()
     #UIManager.initialize()

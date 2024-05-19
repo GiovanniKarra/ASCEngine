@@ -1,6 +1,5 @@
 .vscode/
 **/__pycache__/
 test/
-log.txt
-errorlog.txt
+*.log
 ascengine.egg-info/

@@ -3,25 +3,25 @@ from .gameobject import GameObject, GameObjectManager
 
 
 class UIElement(GameObject):
-    
-    def __init__(self):
-        #self._x : int = 0
-        #self._y : int = 0
-        #self._sprite : Sprite = None
-        #self.tickcount : int = 0
+	
+	def __init__(self):
+		#self._x : int = 0
+		#self._y : int = 0
+		#self._sprite : Sprite = None
+		#self.tickcount : int = 0
 
-        #GameObjectManager.add_object(self)
-        super().__init__()
+		#GameObjectManager.add_object(self)
+		super().__init__()
 
 
-    def destroy(self) -> None:
-        GameObjectManager.remove_object(self)
-        del self
+	def destroy(self) -> None:
+		GameObjectManager.remove_object(self)
+		del self
 
-    
-    def set_sprite(self, sprite: Sprite) -> None:
-        sprite.type = SPRITE_TYPE.UI
-        super().set_sprite(sprite)
+	
+	def set_sprite(self, sprite: Sprite) -> None:
+		sprite.type = SPRITE_TYPE.UI
+		super().set_sprite(sprite)
 
 
 
@@ -34,7 +34,7 @@ class UIElement(GameObject):
 #     def initialize(cls) -> None:
 #         cls._uielements = []
 
-    
+	
 #     @classmethod
 #     def update(cls) -> None:
 #         for element in cls._uielements:
