@@ -4,13 +4,16 @@ from ascengine.core import *
 if __name__ == "__main__":
 	initialize_engine()
 
-	sprite1 : Sprite = Sprite(colored("000\n"\
-									  "000", COLOR.RED, COLOR.BOLD))
-	
-	sprite2 : Sprite = Sprite(colored("X\n"\
-											"XXX", COLOR.BLUE, COLOR.BOLD, COLOR.UNDERLINE))
+	# sprite1 : Sprite = Sprite(colored("000\n"\
+	# 								  "000", COLOR.RED, COLOR.BOLD))
 
-	log (sprite2.sprite)
+	sprite1 : Sprite = Sprite("{RED;BOLD;BG;WHITE}000\n000")
+	
+	# sprite2 : Sprite = Sprite(colored("X\n"\
+	# 								"XXX", COLOR.BLUE, COLOR.BOLD, COLOR.UNDERLINE))
+
+	sprite2 : Sprite = Sprite("{BLUE;BOLD;UNDERLINE}X\nXXX")
+
 
 	ui_sprite : Sprite = Sprite("Ceci est du texte")
 

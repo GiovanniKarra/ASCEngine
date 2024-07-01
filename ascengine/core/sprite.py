@@ -40,7 +40,21 @@ class COLOR:
 	UNDERLINE = 4
 
 	# Special
-	BG = 10 # must be added to the color
+	BG = 10  # must be added to the color
+
+	string_to_id: dict[str, tuple[int]] = {
+		"BLACK": (BLACK,),
+		"RED": (RED,),
+		"GREEN": (GREEN,),
+		"YELLOW": (YELLOW,),
+		"BLUE": (BLUE,),
+		"MAGENTA": (MAGENTA,),
+		"CYAN": (CYAN,),
+		"WHITE": (WHITE,),
+		
+		"BOLD": (BOLD,),
+		"UNDERLINE": (UNDERLINE,)
+	}
 
 
 CharMatrix = list[list[str]]
@@ -49,39 +63,78 @@ CharMatrix = list[list[str]]
 class Sprite:
 	"""a class representing sprites"""
 
-	def __init__(self, sprite : CharMatrix | str = [[""]], layer : int = 0,
+	def __init__(self, sprite : str = "", layer : int = 0,
 				 type : int = SPRITE_TYPE.GAMEOBJECT) -> None:
-		if isinstance(sprite, str):
-			# if sprite[0] != "\x1b": sprite = f"\033[0m{sprite}\033[0m"
 
-			sprite = Sprite._separate_characters(sprite)
-
-		self.sprite : CharMatrix = sprite
+		self.characters, self.attributes, self.background =\
+												self._parse_string(sprite)
 		self.layer : int = layer
 		self.type : int = type
 
 
-	@staticmethod
-	def create_sprite_from_string(
-		string : str, layer : int = 0, type : int = SPRITE_TYPE.GAMEOBJECT) -> "Sprite":
-		"""Returns a sprite type from a string"""
+	def _parse_string(self, string: str):
+		characters: list[list[str]] = [[]]
+		attributes: list[list[list[int]]] = [[]]
+		background: list[list[list[int]]] = [[]]
 
-		sprite : CharMatrix = Sprite._separate_characters(string)
+		current_attributes = [COLOR.RESET]
+		current_background = [COLOR.RESET]
 
-		return Sprite(sprite, layer, type)
-	
+		escape = False
+		bracket_mode = False
+		cumulative_characters = []
+		background_mode = False
+		
+		i = 0
+		for char in string:
+			if escape:
+				characters[i].append(char)
+				attributes[i].append(current_attributes.copy())
+				background[i].append(current_background.copy())
+				escape = False
+			elif bracket_mode:
+				if char in ("}", ",", ";"):
+					bracket_mode = char != "}"
+					attribute_string = "".join(cumulative_characters)
+					cumulative_characters = []
 
-	@staticmethod
-	def _separate_characters(string : str) -> CharMatrix:
-		new_string = string
+					attribute = tuple()
+					try:
+						if attribute_string == "BG":
+							current_background = []
+							background_mode = True
+						elif attribute_string == "FG":
+							background_mode = False
+						elif attribute_string.isnumeric():
+							attribute = (int(attribute_string),)
+						else:
+							attribute = COLOR.string_to_id[attribute_string]
+					except:
+						attribute = (COLOR.RESET,)
 
-		lines : list[str] = new_string.split("\n")
-		while lines[0] == "": lines.pop(0)
-		while lines[-1] == "": lines.pop()
+					for att in attribute:
+						if background_mode:
+							current_background.append(att)
+						elif att == COLOR.RESET:
+							current_attributes = []
+						else:
+							current_attributes.append(att)
 
-		char_matrix = [line.split("\033[0m") for line in lines]
+				else:
+					cumulative_characters.append(char.upper())
+			else:
+				if char == "\n":
+					i += 1
+					characters.append([])
+					attributes.append([])
+					background.append([])
+				elif char == "\\":
+					escape = True
+				elif char == "{":
+					bracket_mode = True
+				else:
+					characters[i].append(char)
+					background[i].append(current_background.copy())
+					attributes[i].append(current_attributes.copy())
 
-		char_matrix = [[char + "\033[0m" for char in line if char != ""]
-					   for line in char_matrix]
-
-		return char_matrix
+		return (characters, attributes, background)
