@@ -30,8 +30,7 @@ class Renderer:
 	
 	@staticmethod
 	def update() -> None:
-		width = int(Prefs.get_param("width"))
-		height = int(Prefs.get_param("height"))
+		width, height = Display.get_size()
 
 		Renderer._characters = [[" " for _ in range(width)] for _ in range(height)]
 		Renderer._attributes = [[[] for _ in range(width)] for _ in range(height)]
@@ -65,8 +64,7 @@ class Renderer:
 		attributes: list[list[list[int]]] = sprite.attributes
 		background: list[list[list[int]]] = sprite.background
 		
-		width = int(Prefs.get_param("width"))
-		height = int(Prefs.get_param("height"))
+		width, height = Display.get_size()
 
 		for i in range(len(characters)):
 			for j in range(len(characters[i])):
