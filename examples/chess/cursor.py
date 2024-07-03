@@ -1,26 +1,25 @@
 from ascengine.core import *
 
 class Cursor(GameObject):
-    def __init__(self):
-        sprite : Sprite = Sprite("X", 1)
-        self.last_move = 0
-        super().__init__(0, 0, sprite)
+	def __init__(self):
+		sprite : Sprite = Sprite("{BOLD;MAGENTA}X", 1)
+		self.last_move = 0
+		super().__init__(0, 0, sprite)
 
-    def update(self) -> None:
-        dx, dy = 0, 0
-        if Input.keypressed(Key.left): dx -= 1
-        if Input.keypressed(Key.right): dx += 1
-        if Input.keypressed(Key.up): dy -= 1
-        if Input.keypressed(Key.down): dy += 1
+	def update(self) -> None:
 
-        if dx != 0 or dy != 0:
-            self.get_sprite().layer = 1
-            self.last_move = self.tickcount
-        
-        if self.last_move + 30 < self.tickcount:
-            self.get_sprite().layer = 1 - 20 * (self.tickcount%46 > 23)
+		dx = int(Input.keypressed(Key.right)) - int(Input.keypressed(Key.left))
+		dy = int(Input.keypressed(Key.down)) - int(Input.keypressed(Key.up))
 
-        x, y = self.get_position()
-        self.set_position(x+dx, y+dy)
+		if dx != 0 or dy != 0:
+			self.get_sprite().layer = 1
+			self.last_move = self.tickcount
+		
+		tickrate = int(Prefs.get_param("tickrate"))
+		if self.last_move + tickrate < self.tickcount:
+			self.get_sprite().layer = 1 - 20 * (self.tickcount%(tickrate*2*0.7) > 0.7*tickrate)
 
-        super().update()
+		x, y = self.get_position()
+		self.set_position(x+dx, y+dy)
+
+		super().update()

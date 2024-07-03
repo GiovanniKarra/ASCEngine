@@ -37,7 +37,6 @@ def main_loop():
 		Display.update()
 		Input.update()
 
-		log((time.time() - init_time))
 		dtime = time.time() - init_time
 		if ticktime > dtime :
 			time.sleep(ticktime - dtime)
