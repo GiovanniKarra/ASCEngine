@@ -48,7 +48,7 @@ class Renderer:
 					Renderer._attributes[i][j],
 					Renderer._background[i][j].copy()
 				)
-				Display.set_pixels(pixel, (x+j, y+i))
+				Display.set_pixels(pixel, (j, i))
 
 		Renderer._torender = {
 			SPRITE_TYPE.BACKGROUND : dict(),

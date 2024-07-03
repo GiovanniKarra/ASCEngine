@@ -11,44 +11,45 @@ from .utils import reset_log, log
 
 
 def initialize_components():
-    if os.name == "nt":
-        from colorama import just_fix_windows_console
-        just_fix_windows_console()
+	if os.name == "nt":
+		from colorama import just_fix_windows_console
+		just_fix_windows_console()
 
-    width, height = int(Prefs.get_param("width")), int(Prefs.get_param("height"))
-    
-    Display.initialize(width, height)
-    GameObjectManager.initialize()
-    #UIManager.initialize()
-    Input.initialize()
+	width, height = int(Prefs.get_param("width")), int(Prefs.get_param("height"))
+	
+	Display.initialize(width, height)
+	GameObjectManager.initialize()
+	#UIManager.initialize()
+	Input.initialize()
 
 
 def main_loop():
-    """The main logic loop of the engine that updates the system each tick"""
-    tickrate = int(Prefs.get_param("tickrate"))
-    ticktime = 1/tickrate
+	"""The main logic loop of the engine that updates the system each tick"""
+	tickrate = int(Prefs.get_param("tickrate"))
+	ticktime = 1/tickrate
 
-    while True:
-        init_time = time.time()
+	while True:
+		init_time = time.time()
 
-        #UIManager.update()
-        GameObjectManager.update()
-        Renderer.update()
-        Display.update()
-        Input.update()
+		#UIManager.update()
+		GameObjectManager.update()
+		Renderer.update()
+		Display.update()
+		Input.update()
 
-        dtime = time.time() - init_time
-        if ticktime > dtime :
-            time.sleep(ticktime - dtime)
+		log((time.time() - init_time))
+		dtime = time.time() - init_time
+		if ticktime > dtime :
+			time.sleep(ticktime - dtime)
 
 
 def initialize_engine():
-    """Initialization of the system"""
-    reset_log()
-    initialize_components()
+	"""Initialization of the system"""
+	reset_log()
+	initialize_components()
 
 
 if __name__ == "__main__":
-    initialize_engine()
+	initialize_engine()
 
-    main_loop()
+	main_loop()
