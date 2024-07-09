@@ -25,6 +25,8 @@ if __name__ == "__main__":
 	board = Board()
 	cursor = Cursor()
 
+	cursor.add_action(board.select)
+
 	# debug = Tracker(cursor)
 
 	main_loop()

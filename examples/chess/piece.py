@@ -10,10 +10,11 @@ class Piece(GameObject):
 		
 		sprite = None
 		self.move_type = None
+		self.color = color
 		
 		match type:
 			case PIECE_TYPE.PAWN:
-				sprite = "P"
+				sprite = "p"
 				self.move_type = (MOVE_TYPE.PAWN,)
 			case PIECE_TYPE.ROOK:
 				sprite = "R"
