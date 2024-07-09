@@ -4,21 +4,25 @@ from datetime import datetime
 LOG_FILE = "log.log"
 ERROR_LOG_FILE = "error.log"
 
+
+def reset_file(filename):
+	with open(filename, "w") as file:
+		file.write("")
+
+
 def reset_log():
-	log_file = open(LOG_FILE, "w")
-	log_file.write("")
-	log_file.close()
-
-	error_log_file = open(ERROR_LOG_FILE, "w")
-	error_log_file.write("")
-	error_log_file.close()
+	reset_file(LOG_FILE)
+	reset_file(ERROR_LOG_FILE)
 
 
-def log(message):
-	with open(LOG_FILE, "a") as log_file:
+def log_to_file(message, filename):
+	with open(filename, "a") as log_file:
 		log_file.write(f"[{datetime.now().strftime(r'%d/%m/%Y %H:%M:%S')}] {message}\n")
 
 
+def log(message):
+	log_to_file(message, LOG_FILE)
+
+
 def log_error(message):
-	with open(ERROR_LOG_FILE, "a") as error_log_file:
-		error_log_file.write(f"[{datetime.now().strftime(r'%d/%m/%Y %H:%M:%S')}] {message}\n")
+	log_to_file(message, ERROR_LOG_FILE)

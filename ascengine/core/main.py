@@ -44,6 +44,8 @@ def main_loop():
 
 def initialize_engine():
 	"""Initialization of the system"""
+	if os.name == "posix": os.system("stty -echo")
+	
 	reset_log()
 	initialize_components()
 
