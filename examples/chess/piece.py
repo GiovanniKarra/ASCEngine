@@ -33,4 +33,4 @@ class Piece(GameObject):
 				self.move_type = (MOVE_TYPE.KING,)
 
 		super().__init__(x, y,
-				   Sprite("{BOLD;%s}%s" % ("YELLOW" if color == 0 else "RED", sprite)))
+				   Sprite("{BOLD;%s}%s" % ("YELLOW" if color == 0 else "RED", sprite), 1))

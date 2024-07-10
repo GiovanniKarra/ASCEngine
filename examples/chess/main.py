@@ -1,7 +1,7 @@
 from ascengine.core import *
 from ascengine.core.renderer import Sprite
 
-from board import Board
+from boardobject import BoardObject
 from cursor import Cursor
 
 
@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
 	initialize_engine()
 
-	board = Board()
+	board = BoardObject()
 	cursor = Cursor()
 
 	cursor.add_action(board.select)
