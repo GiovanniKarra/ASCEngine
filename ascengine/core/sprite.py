@@ -66,8 +66,7 @@ class Sprite:
 	def __init__(self, sprite : str = "", layer : int = 0,
 				 type : int = SPRITE_TYPE.GAMEOBJECT) -> None:
 
-		self.characters, self.attributes, self.background =\
-												self._parse_string(sprite)
+		self.characters, self.attributes, self.background = self._parse_string(sprite)
 		self.layer : int = layer
 		self.type : int = type
 

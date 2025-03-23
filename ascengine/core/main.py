@@ -6,7 +6,7 @@ from .renderer import Renderer
 from .display import Display
 #from .ui import UIManager
 from .prefs import Prefs
-from .input import Input
+from .input_manager import Input
 from .utils import reset_log, log
 
 
@@ -24,7 +24,7 @@ def initialize_components():
 
 
 def main_loop():
-	"""The main logic loop of the engine that updates the system each tick"""
+	"""The main logic loop of the engine that updates the system every tick"""
 	tickrate = int(Prefs.get_param("tickrate"))
 	ticktime = 1/tickrate
 

@@ -19,7 +19,7 @@ class GameObject:
 		self.tickcount += 1
 
 
-	def set_position(self, x : int, y : int) -> None:
+	def set_position(self, x: int, y: int) -> None:
 		"""Set the objects position to x, y"""
 		self._x = x
 		self._y = y

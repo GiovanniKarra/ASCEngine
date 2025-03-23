@@ -4,5 +4,5 @@ from .main import *
 from .display import *
 from .utils import *
 from .ui import *
-from .input import *
+from .input_manager import *
 from .sprite import *
